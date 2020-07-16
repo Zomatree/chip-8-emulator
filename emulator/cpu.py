@@ -37,3 +37,12 @@ class CPU:
     def decrement_timer(self):
         if self.delay_timer:
             self.delay_timer -= 1
+
+    def mainloop(self):
+        while True:
+            self.exec_cycle()
+            self.decrement_timer()
+            print(bin(self.index))
+            self.index += 1
+            self.display.update()
+            time.sleep(1/60)
