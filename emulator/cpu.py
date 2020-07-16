@@ -1,4 +1,3 @@
-import numpy
 from random import randint
 import time
 
@@ -15,13 +14,11 @@ class CPU:
         self.display = display
 
     def add_overflow(a, b):
-        rangeMax = 2 ** 3
         result = a + b
         
         return result, bool(result % 8)
 
     def minus_overflow(a, b):
-        rangeMax = 2 ** 3
         result = a - b
         
         return result, not bool(result % 8)
