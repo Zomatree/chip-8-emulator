@@ -131,7 +131,9 @@ class CPU:
         while True:
             self.exec_cycle()
             self.decrement_timer()
-            print(bin(self.index))
+
             self.index += 1
+
             self.display.update()
-            time.sleep(1/60)
+            self.display.sleep()
+            self.display.clear_screen()
