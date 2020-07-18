@@ -121,7 +121,8 @@ class CPU:
             self.registers[x] = randint(0, 255) & nn
 
         if op_1 == 0xD:
-            self.display.draw(vx, vy, self.memory[self.index:n*8])
+            collision = self.display.draw(vx, vy, self.memory[self.index:n*8])
+            self.registers[0xF] = collision
 
     def decrement_timer(self):
         if self.delay_timer:

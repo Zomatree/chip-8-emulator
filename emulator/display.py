@@ -21,9 +21,17 @@ class Display:
         As described above, VF is set to 1 if any screen pixels are flipped
         from set to unset when the sprite is drawn or to 0 if that doesnt happen
         """
+        collision = False
+    
         for i in range(0, len(pixels), 8):
+            new_row = pixels[i:i+8]
+            old_row = self.screen[vy + int(i / 8)][vx:vx+8]
+            
+            collision = any(True for before, after in zip(old_row, new_row) if before == 1 and after == 0)
             self.screen[vy + int(i / 8)][vx:vx+8] = pixels[i:i+8]
-
+    
+        return int(collision)
+    
     def update(self):
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
