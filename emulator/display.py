@@ -1,8 +1,12 @@
+import os
+os.environ["PYGAME_HIDE_SUPPORT_PROMPT"] = "True"
+
 import pygame
 import sys
 
 pygame.display.init()
 fps = pygame.time.Clock()
+pygame.display.set_caption("CHIP-8 Emulator")
 
 
 class Display:
