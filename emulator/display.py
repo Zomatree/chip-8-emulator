@@ -6,10 +6,10 @@ fps = pygame.time.Clock()
 
 
 class Display:
-    def __init__(self, pixel_size=8):
-        self.pixel_size = 8
+    def __init__(self, pixel_size=16):
+        self.pixel_size = pixel_size
         self.screen = self.blank_screen
-
+        self.keypress = None
         self.surface = pygame.display.set_mode(size=(64*pixel_size, 32*pixel_size))
     
     def draw(self, vx, vy, pixels):
