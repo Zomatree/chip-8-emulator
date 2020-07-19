@@ -1,8 +1,16 @@
 from . import CPU, Display
+import configparser
+import sys
 
-display = Display()
+config = configparser.ConfigParser()
+config.read('config.ini')
+
+if config["logging"]["level"] != "None":
+    import logging
+    logging.basicConfig(level=getattr(logging, config["logging"]["level"]))
+
+display = Display(16, config["input"])
 cpu = CPU(display)
-# cpu.memory[0] = 0x00
-# cpu.memory[1] = 0xE0
-cpu.mainloop()
+cpu.load_program(f"{config['rom']['folder']}{sys.argv[1]}")
 
+cpu.mainloop()
